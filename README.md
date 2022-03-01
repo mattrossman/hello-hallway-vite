@@ -1,7 +1,7 @@
 Add your token to an `.env.local` file (untracked):
 
 ```env
-# .env
+# .env.local
 VITE_AVATAR_WEBKIT_AUTH_TOKEN="..."
 ```
 
