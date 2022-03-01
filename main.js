@@ -1,45 +1,26 @@
-import * as THREE from "three"
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
+import { AUPredictor } from "@quarkworks-inc/avatar-webkit"
 import "./style.css"
 
-// Scene, Camera
-const scene = new THREE.Scene()
-scene.background = new THREE.Color("black")
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-camera.position.set(0, 0, 3)
+// Hallway SDK
+let videoStream = await navigator.mediaDevices.getUserMedia({
+  audio: false,
+  video: {
+    width: { ideal: 640 },
+    height: { ideal: 360 },
+    facingMode: "user",
+  },
+})
 
-// WebGL renderer
-const renderer = new THREE.WebGLRenderer({ antialias: true })
-renderer.setPixelRatio(2)
-renderer.setSize(window.innerWidth, window.innerHeight)
-document.body.appendChild(renderer.domElement)
+console.log(`using auth token ${import.meta.env.VITE_AVATAR_WEBKIT_AUTH_TOKEN}`)
 
-// OrbitControls
-const controls = new OrbitControls(camera, renderer.domElement)
+let predictor = new AUPredictor({
+  apiToken: import.meta.env.VITE_AVATAR_WEBKIT_AUTH_TOKEN,
+  srcVideoStream: videoStream,
+})
 
-// Mesh
-const geometry = new THREE.IcosahedronGeometry()
-const material = new THREE.MeshNormalMaterial()
-const mesh = new THREE.Mesh(geometry, material)
-scene.add(mesh)
-
-// Render loop
-const clock = new THREE.Clock()
-
-function render() {
-  const dt = clock.getDelta()
-
-  controls.update()
-
-  renderer.render(scene, camera)
+predictor.onPredict = (results) => {
+  console.log(results)
 }
-renderer.setAnimationLoop(render)
 
-// Window sizing
-window.addEventListener("resize", onWindowResize)
-function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight
-  camera.updateProjectionMatrix()
-
-  renderer.setSize(window.innerWidth, window.innerHeight)
-}
+await predictor.start()
+console.log("Predictor started...")
