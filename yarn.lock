@@ -1027,10 +1027,10 @@
   resolved "https://registry.yarnpkg.com/@mediapipe/face_mesh/-/face_mesh-0.4.1633559619.tgz#f917e4448e25bc375a905d1d910f1bca450c5e23"
   integrity sha512-Vc8cdjxS5+O2gnjWH9KncYpUCVXT0h714KlWAsyqJvJbIgUJBqpppbIx8yWcAzBDxm/5cYSuBI5p5ySIPxzcEg==
 
-"@quarkworks-inc/avatar-webkit@^2022.2.36":
-  version "2022.2.36"
-  resolved "https://gitlab.com/api/v4/projects/33101379/packages/npm/@quarkworks-inc/avatar-webkit/-/@quarkworks-inc/avatar-webkit-2022.2.36.tgz#b41d9ee0ea2c909944c2f63346ef4f97d81ec106"
-  integrity sha1-tB2e4OoskJlEwvYzRu9Pl9gewQY=
+"@quarkworks-inc/avatar-webkit@2022.3.36":
+  version "2022.3.36"
+  resolved "https://gitlab.com/api/v4/projects/33101379/packages/npm/@quarkworks-inc/avatar-webkit/-/@quarkworks-inc/avatar-webkit-2022.3.36.tgz#209313fc4ea42805b0792c1b0e32b3f4c3dc8f9b"
+  integrity sha1-IJMT/E6kKAWweSwbDjKz9MPcj5s=
   dependencies:
     "@mediapipe/face_mesh" "^0.4.1633559619"
     "@tensorflow/tfjs" "^3.1.0"
