@@ -9,5 +9,9 @@
   },
   "devDependencies": {
     "vite": "^2.8.0"
+  },
+  "dependencies": {
+    "@quarkworks-inc/avatar-webkit": "^2022.2.36",
+    "three": "^0.138.1"
   }
 }
