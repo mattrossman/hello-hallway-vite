@@ -1,11 +1,12 @@
+import "./style.css"
 import * as THREE from "three"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 import Stats from "three/examples/jsm/libs/stats.module.js"
 import { AUPredictor } from "@quarkworks-inc/avatar-webkit"
 
-import "./style.css"
-
 const RPM_AVATAR_URL = "https://d1a370nemizbjq.cloudfront.net/b2572c50-a10a-42b6-ab30-694f60fed40f.glb"
+
+const overlay = document.querySelector("#overlay")
 
 // Scene, Camera
 const scene = new THREE.Scene()
@@ -89,6 +90,8 @@ let predictor = new AUPredictor({
  * @type {(results: AvatarPrediction) => void}
  */
 predictor.onPredict = (results) => {
+  overlay.style.display = "none"
+
   const { actionUnits, rotation } = results
   for (let i = 0; i < meshes.length; ++i) {
     for (let key in actionUnits) {
